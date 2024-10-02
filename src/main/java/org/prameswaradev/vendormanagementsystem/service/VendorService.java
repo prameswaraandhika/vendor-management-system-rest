@@ -2,7 +2,6 @@ package org.prameswaradev.vendormanagementsystem.service;
 
 import lombok.RequiredArgsConstructor;
 import org.prameswaradev.vendormanagementsystem.dto.VendorDto;
-import org.prameswaradev.vendormanagementsystem.entity.VendorEntity;
 import org.prameswaradev.vendormanagementsystem.exception.NotFoundException;
 import org.prameswaradev.vendormanagementsystem.mapper.VendorEntityMapper;
 import org.prameswaradev.vendormanagementsystem.repository.VendorRepository;
@@ -42,5 +41,11 @@ public class VendorService {
 
         var updatedVendor = vendorRepository.save(vendor);
         return VendorEntityMapper.mapToVendorDto(updatedVendor);
+    }
+
+    public void deleteVendor(String vendorId) {
+        var vendor = vendorRepository.findById(vendorId)
+                .orElseThrow(NotFoundException::new);
+        vendorRepository.delete(vendor);
     }
 }

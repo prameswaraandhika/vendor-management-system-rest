@@ -6,17 +6,19 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 import org.hibernate.validator.constraints.Length;
 
-@Entity
-@Table(name = "tbl_vendor")
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "tbl_vendor")
 @SQLRestriction("is_deleted = false")
 @SQLDelete(sql = "UPDATE tbl_vendor SET is_deleted = 'true' WHERE id=?")
 public class VendorEntity extends BaseEntity {
