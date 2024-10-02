@@ -146,6 +146,54 @@ public class VendorController {
         return ResponseEntity.ok(savedVendorDto);
     }
 
+    @PutMapping("/{id}")
+    @Operation(
+            summary = "Update Vendor by ID endpoint",
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                    required = true,
+                    content = @Content(
+                            mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            schema = @Schema(
+                                    implementation = VendorDto.class
+                            )
+                    )
+            ),
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Successful operation",
+                            content = @Content(
+                                    mediaType = MediaType.APPLICATION_JSON_VALUE
+                            )
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Bad credentials",
+                            content = @Content(
+                                    mediaType = MediaType.APPLICATION_JSON_VALUE
+                            )
+                    ),
+                    @ApiResponse(
+                            responseCode = "422",
+                            description = "Validation failed",
+                            content = @Content(
+                                    mediaType = MediaType.APPLICATION_JSON_VALUE
+                            )
+                    ),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "Not found",
+                            content = @Content(
+                                    mediaType = MediaType.APPLICATION_JSON_VALUE
+                            )
+                    )
+            }
+    )
+    public ResponseEntity<?> updateVendor(@PathVariable("id") String vendorId, @RequestBody VendorDto vendorDto){
+        var updatedVendorDto = vendorService.updateVendor(vendorId, vendorDto);
+        return ResponseEntity.ok(updatedVendorDto);
+    }
+
 
 
 }

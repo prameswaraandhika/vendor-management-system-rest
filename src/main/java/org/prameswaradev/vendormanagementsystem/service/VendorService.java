@@ -33,4 +33,14 @@ public class VendorService {
         return VendorEntityMapper.mapToVendorDto(savedVendor);
     }
 
+    public VendorDto updateVendor(String vendorId, VendorDto vendorDto) {
+        var vendor = vendorRepository.findById(vendorId)
+                .orElseThrow(NotFoundException::new);
+        vendor.setName(vendorDto.getName());
+        vendor.setEmail(vendorDto.getEmail());
+        vendor.setAddress(vendorDto.getAddress());
+
+        var updatedVendor = vendorRepository.save(vendor);
+        return VendorEntityMapper.mapToVendorDto(updatedVendor);
+    }
 }
