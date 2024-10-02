@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import java.io.Serial;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class NotFoundException extends RuntimeException{
+public class NotFoundException extends RuntimeException {
 
     @Serial
     public static final long serialVersionUID = 1L;

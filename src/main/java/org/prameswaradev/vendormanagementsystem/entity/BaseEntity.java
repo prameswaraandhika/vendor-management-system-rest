@@ -26,12 +26,10 @@ public abstract class BaseEntity implements Serializable {
     @UuidGenerator
     private String id;
 
-    @NotNull
     @CreatedBy
     @Column(name = "created_by")
     private String createdBy;
 
-    @NotNull
     @LastModifiedBy
     @Column(name = "updated_by")
     private String updatedBy;

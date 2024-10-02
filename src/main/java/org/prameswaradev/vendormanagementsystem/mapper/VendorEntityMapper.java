@@ -4,7 +4,7 @@ import org.prameswaradev.vendormanagementsystem.dto.VendorDto;
 import org.prameswaradev.vendormanagementsystem.entity.VendorEntity;
 
 public class VendorEntityMapper {
-    public static VendorDto mapToVendorDto(VendorEntity vendor){
+    public static VendorDto mapToVendorDto(VendorEntity vendor) {
         return VendorDto.builder()
                 .name(vendor.getName())
                 .email(vendor.getEmail())
@@ -12,7 +12,7 @@ public class VendorEntityMapper {
                 .build();
     }
 
-    public static VendorEntity mapToVendorEntity(VendorDto vendorDto){
+    public static VendorEntity mapToVendorEntity(VendorDto vendorDto) {
         return VendorEntity.builder()
                 .name(vendorDto.getName())
                 .email(vendorDto.getEmail())
