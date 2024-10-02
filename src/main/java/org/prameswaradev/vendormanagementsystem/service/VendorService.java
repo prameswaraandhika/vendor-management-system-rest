@@ -27,4 +27,10 @@ public class VendorService {
         return VendorEntityMapper.mapToVendorDto(vendor);
     }
 
+    public VendorDto createVendor(VendorDto vendorDto) {
+        var vendor = VendorEntityMapper.mapToVendorEntity(vendorDto);
+        var savedVendor = vendorRepository.save(vendor);
+        return VendorEntityMapper.mapToVendorDto(savedVendor);
+    }
+
 }
